@@ -1,8 +1,7 @@
 const PUBLIC_ENDPOINTS = new Set([
   'POST /auth/register',
   'POST /auth/login',
-  'POST /auth/refresh',
-  'GET /gift-ideas/catalog'
+  'POST /auth/refresh'
 ]);
 
 export class ApiError extends Error {
