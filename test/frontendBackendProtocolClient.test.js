@@ -34,6 +34,39 @@ test('request unwraps standard backend envelope', async () => {
   assert.deepEqual(data, { hello: 'world' });
 });
 
+
+test('getCatalog sends auth header when token exists', async () => {
+  let authorizationHeader;
+  const storage = new InMemoryTokenStorage({
+    accessToken: 'catalog-access',
+    refreshToken: 'catalog-refresh',
+    tokenType: 'Bearer'
+  });
+
+  const fetchImpl = async (_url, options) => {
+    authorizationHeader = options.headers.Authorization;
+    return {
+      ok: true,
+      status: 200,
+      async json() {
+        return {
+          responseCode: 'OC_OK',
+          responseEntity: []
+        };
+      }
+    };
+  };
+
+  const client = new GiftServiceApiClient({
+    baseUrl: 'http://localhost:8080',
+    fetchImpl,
+    tokenStorage: storage
+  });
+
+  await client.getCatalog();
+  assert.equal(authorizationHeader, 'Bearer catalog-access');
+});
+
 test('request handles backend wrapped business error', async () => {
   const fetchImpl = async () => ({
     ok: false,
