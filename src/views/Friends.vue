@@ -2,7 +2,7 @@
   <AppShell>
     <h1>Friends</h1>
     <div class="row">
-      <input v-model="usernameQuery" placeholder="Search by username" />
+      <input v-model="usernameQuery" placeholder="Search by username"/>
       <button @click="search">Search</button>
     </div>
 
@@ -30,20 +30,38 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import {onMounted, ref} from 'vue';
 import AppShell from '../components/AppShell.vue';
-import { apiClient } from '../api/client';
-import { authStore } from '../store/auth';
+import {apiClient} from '../api/client';
+import {authStore} from '../store/auth';
 
 const friends = ref([]);
 const searchResults = ref([]);
 const usernameQuery = ref('');
 
-const load = async () => { friends.value = await apiClient.getFriends(); };
-const search = async () => { searchResults.value = await apiClient.searchFriends(usernameQuery.value); };
-const add = async (login) => { await apiClient.addFriend(login); await load(); };
-const remove = async (login) => { await apiClient.removeFriend(login); await load(); };
-const canAdd = (user) => user.login !== authStore.state.user?.login && !friends.value.some((f) => f.login === user.login);
+const load = async () => {
+  const res = await apiClient.getFriends();
+  friends.value = res.friends ?? [];
+};
+
+const search = async () => {
+  const res = await apiClient.searchFriends(usernameQuery.value);
+  searchResults.value = res.friends ?? [];
+};
+
+const add = async (login) => {
+  await apiClient.addFriend(login);
+  await load();
+};
+
+const remove = async (login) => {
+  await apiClient.removeFriend(login);
+  await load();
+};
+
+const canAdd = (user) =>
+    user.login !== authStore.state.user?.login &&
+    !friends.value.some((f) => f.login === user.login);
 
 onMounted(load);
 </script>

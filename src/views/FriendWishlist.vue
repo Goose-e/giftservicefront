@@ -27,8 +27,11 @@ const error = ref(false);
 
 onMounted(async () => {
   try {
-    items.value = await apiClient.getFriendWishlist(route.params.login);
-  } catch {
+    const res = await apiClient.getFriendWishlist(route.params.login);
+    console.log('friend wishlist:', res);
+    items.value = res?.gifts ?? [];
+  } catch (e) {
+    console.error(e);
     error.value = true;
   }
 });

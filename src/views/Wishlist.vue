@@ -14,14 +14,23 @@
     </div>
   </AppShell>
 </template>
-
 <script setup>
 import { onMounted, ref } from 'vue';
 import AppShell from '../components/AppShell.vue';
 import { apiClient } from '../api/client';
 
 const items = ref([]);
-const load = async () => { items.value = await apiClient.getMyWishlist(); };
-const removeGift = async (giftId) => { await apiClient.removeFromWishlist(giftId); await load(); };
+
+const load = async () => {
+  const res = await apiClient.getMyWishlist();
+  console.log('wishlist:', res);
+  items.value = res?.gifts ?? [];
+};
+
+const removeGift = async (giftId) => {
+  await apiClient.removeFromWishlist(giftId);
+  await load();
+};
+
 onMounted(load);
 </script>

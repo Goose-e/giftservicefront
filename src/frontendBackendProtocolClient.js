@@ -312,7 +312,7 @@ export class GiftServiceApiClient {
     return this.request('GET', '/friends');
   }
 
-  searchFriends(username) {
-    return this.request('GET', '/friends/search', { query: { username } });
-  }
+    searchFriends(username) {
+        return this.request('GET', `/friends/search?username=${encodeURIComponent(username)}`);
+    }
 }

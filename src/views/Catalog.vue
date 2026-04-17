@@ -2,6 +2,7 @@
   <AppShell>
     <h1>Catalog</h1>
     <input v-model="search" placeholder="Search by gift or tag" />
+
     <form class="card" @submit.prevent="createGift">
       <h3>Add gift</h3>
       <input v-model="form.giftName" placeholder="giftName" />
@@ -10,6 +11,7 @@
       <button>Create</button>
       <p class="error" v-if="error">{{ error }}</p>
     </form>
+
     <div class="grid" v-if="filtered.length">
       <article class="card" v-for="gift in filtered" :key="gift.giftId">
         <h3>{{ gift.giftName }}</h3>
@@ -18,6 +20,7 @@
         <button @click="addToWishlist(gift.giftId)">В wishlist</button>
       </article>
     </div>
+
     <p v-else class="card">Пусто. Добавьте подарок.</p>
   </AppShell>
 </template>
@@ -32,18 +35,43 @@ const search = ref('');
 const error = ref('');
 const form = reactive({ giftName: '', giftAvgPrice: 0, tagName: '' });
 
-const filtered = computed(() => gifts.value.filter((g) => `${g.giftName} ${g.tagName}`.toLowerCase().includes(search.value.toLowerCase())));
+const filtered = computed(() => {
+  const query = search.value.trim().toLowerCase();
+  return gifts.value.filter((g) =>
+      `${g.giftName ?? ''} ${g.tagName ?? ''}`.toLowerCase().includes(query)
+  );
+});
 
-async function load() { gifts.value = await apiClient.getCatalog(); }
+async function load() {
+  try {
+    const res = await apiClient.getCatalog();
+    console.log('catalog response:', res);
+    gifts.value = res?.gifts ?? [];
+    console.log('loaded gifts:', gifts.value);
+  } catch (e) {
+    console.error(e);
+    error.value = 'Ошибка загрузки каталога';
+  }
+}
 
 async function createGift() {
   if (!form.giftName || !form.tagName || form.giftAvgPrice < 0) {
     error.value = 'giftName/tagName required, price >=0';
     return;
   }
-  error.value = '';
-  await apiClient.createCatalogGift(form);
-  await load();
+
+  try {
+    error.value = '';
+    await apiClient.createCatalogGift({
+      giftName: form.giftName,
+      giftAvgPrice: Number(form.giftAvgPrice),
+      tagName: form.tagName,
+    });
+    await load();
+  } catch (e) {
+    console.error(e);
+    error.value = 'Ошибка создания подарка';
+  }
 }
 
 async function addToWishlist(giftId) {
