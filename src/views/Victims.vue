@@ -58,7 +58,7 @@ async function create() {
 
   await apiClient.createVictim({
     gender: form.gender,
-    birthdate: form.birthdate,
+    birthdate: `${form.birthdate}T00:00:00`,
     country: form.country,
     city: form.city,
     info: form.info,
