@@ -32,15 +32,28 @@ const items = ref([]);
 const error = ref('');
 const form = reactive({ gender: '', birthdate: '', country: '', city: '', info: '' });
 
-const load = async () => { items.value = await apiClient.getVictims(); };
+const load = async () => {
+  const res = await apiClient.getVictims();
+  console.log('victims:', res);
+  items.value = res?.victims ?? [];
+};
 
 async function create() {
   if (!form.gender || !form.birthdate || !form.country || !form.city) {
     error.value = 'Заполните обязательные поля';
     return;
   }
+
   error.value = '';
-  await apiClient.createVictim(form);
+
+  await apiClient.createVictim({
+    gender: form.gender,
+    birthdate: form.birthdate,
+    country: form.country,
+    city: form.city,
+    info: form.info,
+  });
+
   await load();
 }
 
