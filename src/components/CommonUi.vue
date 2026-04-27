@@ -48,15 +48,15 @@ a {
   align-items: center;
   gap: 12px;
   font-weight: 800;
-  font-size: 34px;
+  font-size: 44px;
 }
 
 .brand-icon {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .brand-text {
-  font-size: 36px;
+  font-size: 42px;
   line-height: 1;
 }
 
@@ -69,20 +69,14 @@ a {
 }
 
 .nav-links a {
-  font-size: 22px;
+  font-size: 30px;
   opacity: 0.95;
   padding: 8px 10px;
   border-radius: 12px;
-  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-links a.router-link-active {
   background: rgba(255, 255, 255, 0.16);
-}
-
-.nav-links a:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-1px);
 }
 
 .logout-btn {
@@ -91,15 +85,9 @@ a {
   padding: 10px 24px;
   border-radius: 28px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.22);
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.logout-btn:hover {
-  background: rgba(255, 255, 255, 0.32);
-  transform: translateY(-1px);
 }
 
 .page-content {
@@ -108,14 +96,14 @@ a {
 }
 
 .page-title {
-  font-size: 52px;
+  font-size: 60px;
   margin: 0;
 }
 
 .page-subtitle {
   margin-top: 10px;
   margin-bottom: 34px;
-  font-size: 28px;
+  font-size: 38px;
   color: var(--text-muted);
 }
 
@@ -125,12 +113,6 @@ a {
   border-radius: 30px;
   padding: 24px;
   box-shadow: 0 8px 24px rgba(18, 23, 33, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 26px rgba(18, 23, 33, 0.12);
 }
 
 .card-grid {
@@ -146,21 +128,14 @@ a {
   border-radius: 22px;
   padding: 14px 22px;
   color: #fff;
-  font-size: 20px;
-  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.04);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
+  font-size: 30px;
 }
 
 .btn-chip {
   border: 0;
   border-radius: 999px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 26px;
 }
 
 input,
@@ -170,7 +145,7 @@ select {
   border: 1px solid #d8dce5;
   border-radius: 18px;
   padding: 16px 20px;
-  font-size: 18px;
+  font-size: 32px;
   color: #364152;
   background: #f8f8fb;
 }
@@ -257,15 +232,15 @@ textarea {
 
   .nav-links a,
   .logout-btn {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .page-title {
-    font-size: 36px;
+    font-size: 42px;
   }
 
   .page-subtitle {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .btn,

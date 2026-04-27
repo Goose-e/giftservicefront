@@ -53,24 +53,24 @@ onMounted(load);
 
 <style scoped>
 .wish-card h3 {
-  font-size: 36px;
+  font-size: 45px;
   margin: 14px 0;
 }
 
 .wish-emoji {
-  width: 100px;
-  height: 100px;
+  width: 136px;
+  height: 136px;
   border-radius: 50%;
   background: #f0e4d4;
   display: grid;
   place-items: center;
-  font-size: 42px;
+  font-size: 62px;
   margin: 0 auto;
 }
 
 .wish-meta {
   color: #6b7280;
-  font-size: 22px;
+  font-size: 34px;
 }
 
 .remove-btn {
@@ -90,6 +90,6 @@ onMounted(load);
 
 .add-empty {
   display: inline-block;
-  font-size: 20px;
+  font-size: 28px;
 }
 </style>

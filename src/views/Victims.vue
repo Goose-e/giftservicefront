@@ -8,10 +8,7 @@
         <h2>Создание анкеты</h2>
         <div class="form-grid">
           <input v-model="form.gender" placeholder="gender" />
-          <div class="date-input-wrap">
-            <input v-model="form.birthdate" type="date" />
-            <span class="date-icon">📅</span>
-          </div>
+          <input v-model="form.birthdate" type="datetime-local" />
           <input v-model="form.country" placeholder="country" />
           <input v-model="form.city" placeholder="city" />
           <textarea class="full" v-model="form.info" placeholder="info" />
@@ -88,7 +85,7 @@ onMounted(load);
 
 .victim-form h2 {
   margin-top: 0;
-  font-size: 38px;
+  font-size: 48px;
 }
 
 .form-grid {
@@ -99,23 +96,6 @@ onMounted(load);
 
 .full {
   grid-column: 1 / -1;
-}
-
-.date-input-wrap {
-  position: relative;
-}
-
-.date-input-wrap input {
-  padding-right: 44px;
-}
-
-.date-icon {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 20px;
 }
 
 .create-btn {
@@ -137,31 +117,31 @@ onMounted(load);
 }
 
 .victim-card h3 {
-  font-size: 34px;
+  font-size: 46px;
   margin: 0 0 8px;
 }
 
 .victim-card p {
   margin: 0;
   color: #6b7280;
-  font-size: 22px;
+  font-size: 30px;
 }
 
 .avatar {
-  width: 86px;
-  height: 86px;
+  width: 102px;
+  height: 102px;
   border-radius: 50%;
   background: #bde7d1;
   display: grid;
   place-items: center;
-  font-size: 36px;
+  font-size: 46px;
 }
 
 .open-link {
   display: inline-block;
   margin-top: 12px;
   color: #047857;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 @media (max-width: 1200px) {

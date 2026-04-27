@@ -109,7 +109,7 @@ onMounted(load);
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 28px;
 }
 
 .create-btn {
@@ -118,23 +118,23 @@ onMounted(load);
 }
 
 .gift-card h3 {
-  font-size: 36px;
+  font-size: 45px;
   margin: 12px 0;
 }
 
 .gift-emoji {
-  width: 100px;
-  height: 100px;
+  width: 136px;
+  height: 136px;
   border-radius: 50%;
   background: #ebe7fa;
   display: grid;
   place-items: center;
-  font-size: 44px;
+  font-size: 64px;
   margin: 0 auto;
 }
 
 .gift-price {
-  font-size: 24px;
+  font-size: 34px;
   color: #6b7280;
 }
 

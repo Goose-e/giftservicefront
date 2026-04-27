@@ -52,19 +52,19 @@ onMounted(async () => {
 
 <style scoped>
 .rec-card h3 {
-  font-size: 34px;
+  font-size: 45px;
   margin: 14px 0;
 }
 
 .rec-emoji {
-  width: 100px;
-  height: 100px;
+  width: 136px;
+  height: 136px;
   border-radius: 50%;
   background: #d8e4f5;
   display: grid;
   place-items: center;
   margin: 0 auto;
-  font-size: 42px;
+  font-size: 62px;
 }
 
 .rec-tag {
@@ -75,12 +75,12 @@ onMounted(async () => {
 .reason-title {
   margin: 18px 0 8px;
   font-weight: 800;
-  font-size: 24px;
+  font-size: 34px;
 }
 
 .reason-text {
   margin: 0;
-  font-size: 22px;
+  font-size: 34px;
   color: #6b7280;
 }
 </style>

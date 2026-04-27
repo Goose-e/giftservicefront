@@ -88,7 +88,7 @@ onMounted(load);
 }
 
 .section-title {
-  font-size: 40px;
+  font-size: 52px;
   margin: 40px 0 22px;
 }
 
@@ -105,29 +105,29 @@ onMounted(load);
 
 .result-card h4,
 .friend-card h4 {
-  font-size: 32px;
+  font-size: 44px;
   margin: 0;
 }
 
 .result-card p {
   margin: 8px 0;
   color: #6b7280;
-  font-size: 22px;
+  font-size: 33px;
 }
 
 .avatar {
-  width: 78px;
-  height: 78px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 34px;
+  font-size: 46px;
   background: #cceef5;
 }
 
 .avatar.large {
-  width: 88px;
-  height: 88px;
+  width: 100px;
+  height: 100px;
   background: #e2e8ff;
 }
 
